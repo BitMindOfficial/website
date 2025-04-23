@@ -1,0 +1,55 @@
+main h2, h5{
+    margin: 0;
+}
+main > a{
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: 1px solid grey;
+    transition: all 0.3s;
+    margin-top: 50px;
+    cursor: pointer;
+}
+main > a:hover{
+    border: 1px solid white;
+}
+main > a:hover h5{
+    text-decoration: underline;
+}
+
+
+
+article{
+    color: rgb(240, 240, 240);
+    padding: 10px;
+    border-radius: 10px;
+}
+.blog-body p{
+    text-indent: 2em
+}
+.blog-body h4{
+    margin: 0;
+}
+.blog-body a{
+    text-decoration: underline;
+}
+.blog-body a:hover{
+    text-decoration: underline 2px;
+}
+
+
+.codeBox{
+    background: #2b2b2b;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: left;
+    font-family: monospace;
+    overflow-x: auto;
+}
+.codeBox::-webkit-scrollbar{
+    height: 8px;
+}
+code{
+    white-space: pre-wrap;
+    white-space: pre;  /* Preserves spaces and line breaks */
+    word-wrap: normal;  /* Prevents breaking unless necessary */
+}

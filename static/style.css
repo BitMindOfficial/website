@@ -11,7 +11,8 @@ a{
 
 body{
     margin: 0;
-    background: #000;
+    /* background: #0b0b0b; */
+    background: #212121;
     font-family: 'Inter', sans-serif;
     color: white;
     display: flex;

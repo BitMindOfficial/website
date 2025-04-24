@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+        <!-- Google Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8723574140909017"
+    crossorigin="anonymous"></script>
+
+       <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFGYBWPKZW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-LFGYBWPKZW');
+    </script>
+
+    <title>BitMindAI | Blogs | LIDA</title>
+    <link rel="stylesheet" href="/static/blogs/style.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/main.js"></script>
+</head>
+<body>
+    <header>
+        <a href="/"><h1>BitMindAI</h1></a>
+        <img id="icon" src="/static/pane-close.svg" alt="Open menu" tabindex="0" role="button" style="cursor: pointer;">
+        <div>
+            <a href="https://platform.bitmindai.in" target="_blank">APIs</a>
+            <a href="#" id="signinBtn">
+                <button>Sign Up</button>
+            </a>
+        </div>
+    </header>
+
+
+    <nav id="nav">
+        <div class="items">
+            <a href="/research">Research</a>
+            <a href="/blogs">Blogs</a>
+            <a href="/projects">Projects</a>
+            <a href="https://platform.bitmindai.in" target="_blank">API</a>
+            <a href="/team">Our Team</a>
+        </div>
+    </nav>
+
+
+    <main>
+        <article class="blog-post">
+            <div class="blog-header">
+                <h2>LIDA</h2>
+                <h5>23 Apr 2025 | MrLwitwma</h5>
+            </div>
+            <div class="blog-body">
+                <h4>Introduction to LIDA</h4>
+                <p>
+                    LIDA (Language Identification & Detection AI) is an open-source language detection model developed to identify the language of a given text input with high accuracy and speed.
+                    It is designed for developers, researchers, and language enthusiasts.
+                    LIDA supports wide variety of languages like English, Hindi, Spanish, Bodo, French, Bangla, Japanese, Kannada, Russian, German and many more.
+                    It uses deep learning architectures such as LSTM (Long Short-Term Memory) networks, LIDA can understand even short or noisy texts, makeing it ideal for real-world applications, to get the maximum accuracy with LIDA we recommend users to use long text for the model to capture more information about the text.
+                </p>
+
+                <h4>Where and how to download LIDA?</h4>
+                <p>
+                    LIDA is open-source and the source code of this AI model is available at GitHub.
+                    <br>
+                    Sources of LIDA:
+                    <ul>
+                        <li><a href="https://github.com/BitMindOfficial/Lida" target="_blank">https://github.com/BitMindOfficial/Lida</a></li>
+                        <li><a href="https://github.com/MrLwitwma/Lida" target="_blank">https://github.com/MrLwitwma/Lida</a></li>
+                    </ul> 
+                </p>
+                <p>
+                    If one of the link does not work or shows no repository with this name try the other link. The first link is from the company, and the other link is from the creator of the model (@mrlwitwma).
+                    <br>
+                    If (in future) you face any issue in finding the repository try reading newer blogs from bitmindai at <a href="/" target="_blank">https://bitmindai.in/blogs</a>
+                </p>
+
+                <h4>How to use LIDA?</h4>
+                <p>
+                    Using our AI model LIDA is super easy and fast.
+                    Firstly download LIDA from the two links given above.
+                    Once you clone or download the repository, you will see file structure in this formate.
+
+                    <div class="codeBox">
+                        <code>
+/
+|-LICENSE
+|
+|-README.md
+|
+|-language_model.pth
+|
+|-model.py
+|
+|-model_config.json
+\
+                        </code>
+                    </div>
+
+                    Lets learn what each of this file contain and what to do with them.
+                    <ul>
+                        <li>Firstly, the <strong>LICENSE</strong> - LIDA has a MIT license, so users can use it for any purpose without any restriction.</li>
+                        <li><strong>README.md</strong> - it contains all the information needed by the users to use the model and the languages the model supports. Well you are reading how to use it so this will help you for knowing which language is supported by the current model.</li>
+                        <li><strong>language_model.pth</strong> - this is the language detection model all the weights needed for the model are stored in this file. This file defines the the accuracy of the model, the well trained model will have higher size.</li>
+                        <li><strong>model_config.json</strong> - this file contains all the configuration file needed like the vocabulary that the model learned during training and the language code. Making changes in this file might make the model seems like it is doing mistake even when it isn't.</li>
+                        <li><strong>model.py</strong> - this is the python file which needs to be run after downloading or cloning the repository.</li>
+                    </ul>
+                    Open "model.py", at the bottom add this code.
+
+                    <div class="codeBox">
+                        <code>
+text = 'this is an english text'
+language, language_probablities = predict_language(text)
+print(language)
+print(language_probablities)
+                        </code>
+                    </div>
+                    Run the file "model.py" you will get output like
+
+                    <div class="codeBox">
+                        <code>
+en
+{'fr': 2.9401578394150363e-08, 'en': 100.0, 'hi': 6.4342260686078845e-09, 'brx': 1.930030267549565e-09, 'bn': 1.0469033417948026e-07, 'ja': 1.9418637704771147e-10, 'de': 1.721835590773324e-08, 'es': 2.1494576951663902e-08}
+                        </code>
+                    </div>
+                    You can add algorithm to the output like if the script is "roman" then remove ja, hi, brx, bn, etc. or the language which does not use roman script.
+                </p>
+            </div>
+            <div class="blog-footer">
+                <!-- <p><strong>Tags:</strong> #AI #LanguageDetection #OpenSource #NLP #LIDA #Usage</p> -->
+            </div>
+        </article>                  
+
+        <footer>
+            <div class="bottom">
+                <div class="footerContent">
+                    <div class="content">
+                        <h4>Contacts</h4>
+                        <p>bitmindofficial@gmail.com</p>
+                        <p>mrlwitwmabusiness@gmail.com</p>
+                    </div>
+
+                    <div class="content">
+                        <h4>Polices</h4>
+                        <p>
+                            <a href="/policies/privacy-policy/">Privacy Policy</a>
+                        </p>
+                        <p>
+                            <a href="/policies/terms-of-usage/">Terms of Service</a>
+                        </p>
+                    </div>
+
+                    <div class="content">
+                        <h4>Company</h4>
+                        <p>
+                            <a href="/about-us/">About Us</a>
+                        </p>
+                        <p>
+                            <a href="/team/">Our Team</a>
+                        </p>
+                    </div>
+                </div>
+                <span>©BitMindAI 2025</span>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

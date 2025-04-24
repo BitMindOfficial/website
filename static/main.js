@@ -106,28 +106,36 @@ document.addEventListener('DOMContentLoaded', ()=>{
 //             submitButton.style.border = "none";
 //             submitButton.style.padding = "8px 16px";
 //             submitButton.style.cursor = "pointer";
+
 //             submitButton.onclick = function () {
 //                 const email = emailInput.value.trim();
-//                 if (email) {
-//                     fetch("/temp/store_email/", {
-//                         method: "POST",
-//                         headers: {
-//                             "Content-Type": "application/json"
-//                         },
-//                         body: JSON.stringify({ email })
-//                     })
-//                     .then(response => response.json())
-//                     .then(data => {
-//                         alert(data.message);
-//                         document.body.removeChild(popup);
-//                     })
-//                     .catch(error => {
-//                         alert("An error occurred");
-//                     });
-//                 } else {
-//                     alert("Please enter a valid email");
+                
+//                 if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+//                     alert("Please enter a valid email address.");
+//                     return;
 //                 }
-//             };
+            
+//                 fetch("https://deepspaceai.pythonanywhere.com/store_email/", {
+//                     method: "POST",
+//                     headers: {
+//                         "Content-Type": "application/json"
+//                     },
+//                     body: JSON.stringify({ email })
+//                 })
+//                 .then(response => response.json())
+//                 .then(data => {
+//                     if (data.success) {
+//                         alert("Email saved successfully!");
+//                     } else {
+//                         alert(data.error || "Something went wrong.");
+//                     }
+//                     document.body.removeChild(popup);
+//                 })
+//                 .catch(error => {
+//                     console.error(error);
+//                     alert("An error occurred while submitting your email.");
+//                 });
+//             };            
 
 //             // Create close button
 //             const closeButton = document.createElement("button");
@@ -152,3 +160,126 @@ document.addEventListener('DOMContentLoaded', ()=>{
 //         });
 //     }
 // });
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const signUpButton = document.getElementById("signinBtn");
+
+    // Helper to get cookie value
+    function getCookie(name) {
+        const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+        return match ? match[2] : null;
+    }
+
+    // Check if email has been saved previously
+    if (getCookie("email_saved") === "true") {
+        if (signUpButton) {
+            signUpButton.style.display = "none";
+        }
+        return;
+    }
+
+    if (signUpButton) {
+        signUpButton.addEventListener("click", function (event) {
+            event.preventDefault();
+
+            // Create popup container
+            const popup = document.createElement("div");
+            popup.style.position = "fixed";
+            popup.style.top = "50%";
+            popup.style.left = "50%";
+            popup.style.transform = "translate(-50%, -50%)";
+            popup.style.padding = "20px";
+            popup.style.background = "#000";
+            popup.style.color = "#fff";
+            popup.style.boxShadow = "0px 0px 10px rgba(255, 255, 255, 0.2)";
+            popup.style.zIndex = "1000";
+            popup.style.borderRadius = "8px";
+            popup.style.textAlign = "center";
+            popup.style.border = "1px solid #fff";
+
+            // Create input field
+            const emailInput = document.createElement("input");
+            emailInput.type = "email";
+            emailInput.placeholder = "Enter your email";
+            emailInput.style.margin = "10px 0";
+            emailInput.style.padding = "8px";
+            emailInput.style.width = "100%";
+            emailInput.style.boxSizing = "border-box";
+            emailInput.style.background = "#222";
+            emailInput.style.color = "#fff";
+            emailInput.style.border = "1px solid #fff";
+
+            // Create submit button
+            const submitButton = document.createElement("button");
+            submitButton.textContent = "Submit";
+            submitButton.style.marginRight = "10px";
+            submitButton.style.background = "#fff";
+            submitButton.style.color = "#000";
+            submitButton.style.border = "none";
+            submitButton.style.padding = "8px 16px";
+            submitButton.style.cursor = "pointer";
+
+            submitButton.onclick = function () {
+                const email = emailInput.value.trim();
+
+                if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+                    alert("Please enter a valid email address.");
+                    return;
+                }
+
+                fetch("https://deepspaceai.pythonanywhere.com/store_email/", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ email })
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            // Save cookie to indicate email was submitted
+                            document.cookie = "email_saved=true; max-age=31536000; path=/";
+                            alert("Email saved successfully!");
+                            if (signUpButton) {
+                                signUpButton.style.display = "none";
+                            }
+                        } else {
+                            alert(data.error || "Something went wrong.");
+                        }
+                        document.body.removeChild(popup);
+                    })
+                    .catch(error => {
+                        console.error(error);
+                        alert("An error occurred while submitting your email.");
+                    });
+            };
+
+            // Create close button
+            const closeButton = document.createElement("button");
+            closeButton.textContent = "Close";
+            closeButton.style.background = "#fff";
+            closeButton.style.color = "#000";
+            closeButton.style.border = "none";
+            closeButton.style.padding = "8px 16px";
+            closeButton.style.cursor = "pointer";
+            closeButton.onclick = function () {
+                document.body.removeChild(popup);
+            };
+
+            // Append elements to popup
+            popup.appendChild(emailInput);
+            popup.appendChild(document.createElement("br"));
+            popup.appendChild(submitButton);
+            popup.appendChild(closeButton);
+
+            // Append popup to body
+            document.body.appendChild(popup);
+        });
+    }
+});

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="title" content="BitMindAI Blogs - Host Website with Cloudflare Tunnel">
+    <meta name="description" content="Learn how to host your local website securely using Cloudflare Tunnel. Keep your IP address safe while making your site accessible to anyone. Detailed guide for both Windows and Linux users.">
+    <meta name="keywords" content="Cloudflare Tunnel, host website, secure tunnel, reverse proxy, IP protection, local server, cloudflared, hosting, Cloudflare, website security">
+    <meta name="author" content="MrLwitwma">
+    <link rel="icon" href="/static/bitmindai-logo-circle.svg" type="image/x-icon">
+
+    <!-- Meta Robots (for SEO) -->
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph Meta Tags for social media -->
+    <meta property="og:title" content="Host Website with Cloudflare Tunnel | MrLwitwma">
+    <meta property="og:description" content="Learn how to host your local website securely using Cloudflare Tunnel. Keep your IP address safe while making your site accessible to anyone.">
+    <meta property="og:image" content="https://bitmindai.in/static/bitmindai-logo-sqr.png">
+    <meta property="og:url" content="https://bitmindai.in">
+
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Host Website with Cloudflare Tunnel | MrLwitwma">
+    <meta name="twitter:description" content="Learn how to host your local website securely using Cloudflare Tunnel. Keep your IP address safe while making your site accessible to anyone.">
+    <meta name="twitter:image" content="https://bitmindai.in/static/bitmindai-logo-sqr.png">
+    <meta name="twitter:url" content="https://bitmindai.in">
+
+
+        <!-- Google Adsense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8723574140909017"
+    crossorigin="anonymous"></script>
+
+       <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LFGYBWPKZW"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-LFGYBWPKZW');
+    </script>
+
+    <title>BitMindAI | Blogs | Host Website with Cloudflare Tunnel</title>
+    <link rel="stylesheet" href="/static/blogs/style.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="/static/main.js"></script>
+</head>
+<body>
+    <header>
+        <a href="/"><h1>BitMindAI</h1></a>
+        <img id="icon" src="/static/pane-close.svg" alt="Open menu" tabindex="0" role="button" style="cursor: pointer;">
+        <div>
+            <a href="https://platform.bitmindai.in" target="_blank">APIs</a>
+            <a href="#" id="signinBtn">
+                <button>Sign Up</button>
+            </a>
+        </div>
+    </header>
+
+
+    <nav id="nav">
+        <div class="items">
+            <a href="/research">Research</a>
+            <a href="/blogs">Blogs</a>
+            <a href="/projects">Projects</a>
+            <a href="https://platform.bitmindai.in" target="_blank">API</a>
+            <a href="/team">Our Team</a>
+        </div>
+    </nav>
+
+
+    <main>
+        <article class="blog-post">
+            <div class="blog-header">
+                <h2>How to Host Website using Cloudflare Tunnel?</h2>
+                <h5>01 May 2025 | MrLwitwma</h5>
+            </div>
+            <div class="blog-body">
+                <h4>What is Cloudflare Tunnel?</h4>
+                <p>
+                    Cloudflare Tunnel securely connects your local server to the internet through Cloudflare's network without exposing your public IP.
+                    Lets say you have a local website running on your deice so to make the website live you would use your public IP address so that users can use the system you build.
+                    You would need to configure your domain to point to that IP address, using Cloudlfare Tunnel your IP address will be kept safe. 
+                </p>
+                
+                <h4>Cloudflare Tunnel will keep my IP safe How?</h4>
+                <p>
+                    Cloudflare Tunnel works as a type of reverse proxy that securely routes traffic from Cloudflare’s edge to your local server.
+                    So its like if a user opens your website(example.com) and ask for data from the site(example.com) the request will be routed to Cloudflare then Cloudflare will route the request to your local website(http://localhost:5000).
+                    Then your local server will respond the data to cloudflare then the cloudflare will give the data to the user.
+                    You might think that this process will take a lot of time but this process happens in milliseconds so it does not feel like it is taking a lot of time.
+                </p>
+
+                <h4>How to install cloudflare Tunnel? (Windows)</h4>
+                <p>
+                    To use cloudflare tunnel you will have to download cloudflared on you PC.
+                    To download cloudflared paste the following code on your command prompt.
+                </p>
+                <ol>
+                    This code is going to be for the windows user.
+                    
+                    <br>
+                    
+                    <li>Open Command Prompt as administrator</li>
+                    
+                    <br>
+                    
+                    <li>Download cloudflared.exe</li>
+                    <div class="codeBox">
+                        <code>
+curl -L -o cloudflared.exe https://developers.cloudflare.com/cloudflare-one/static/documentation/connections/connect-apps/install-and-setup/installation-links/windows/cloudflared.exe
+                        </code>
+                    </div>
+                    
+                    <br>
+                    
+                    <li>Move cloudflared.exe to a system PATH directory</li>
+                    <div class="codeBox">
+                        <code>
+move cloudflared.exe C:\Windows\System32\
+                        </code>
+                    </div>
+                    
+                    <br>
+
+                    <li>Verify installation</li>
+                    <div class="codeBox">
+                        <code>
+cloudflared --version
+                        </code>
+                    </div>
+                </ol>
+
+
+                
+                <h4>How to install cloudflare Tunnel? (Linux)</h4>
+                <p>
+                    To use cloudflare tunnel you will have to download cloudflared on you PC.
+                    To download cloudflared paste the following code on your command prompt.
+                </p>
+                <ol>
+                    This code is going to be for the Linux user.
+                    <br>
+                    <br>
+                    
+                    <li>Download cloudflared.exe</li>
+                    # Debian/Ubuntu
+                    <div class="codeBox">
+                        <code>
+wget -q https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb
+                        </code>
+                    </div>
+                    
+                    <br>
+
+                    <li>Install the package:</li>
+                    <div class="codeBox">
+                        <code>
+sudo dpkg -i cloudflared-linux-amd64.deb
+                        </code>
+                    </div>
+
+                    <br>
+
+                    <li>Verify installation</li>
+                    <div class="codeBox">
+                        <code>
+cloudflared --version
+                        </code>
+                    </div>
+                </ol>
+
+                <h4>How to start hosting website?</h4>
+                <p>
+                    To host your local website lets say running on the url "http://127.0.0:5000"
+                    <br>
+                    You would need to open your command prompt then type the following command.
+
+                    <div class="codeBox">
+                        <code>
+cloudflared tunnel --url 127.0.0:5000
+                        </code>
+                    </div>
+
+                    Then find url in a box like this:
+
+                    <div class="codeBox">
+                        <code>
+2025-05-01T18:01:00Z INF +--------------------------------------------------------------------------------------------+
+2025-05-01T18:01:00Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
+2025-05-01T18:01:00Z INF |  https://others-across-filme-irc.trycloudflare.com                                         |
+2025-05-01T18:01:00Z INF +--------------------------------------------------------------------------------------------+
+                        </code>
+                    </div>
+                    On opening the URL you will see your local site online and anyone with the internet can use your website and all the request will be sent to your local server.
+                </p>
+
+                <h4>Warnings</h4>
+                <p>
+                    There is not much warning just that you will have to keep your PC running for the website to run without it being closed.
+                    And ya you will need your device to be connected to the internet to keep it running or else the data will not be sent and received.
+                </p>
+
+            </div>
+            <div class="blog-footer">
+            </div>
+        </article>                  
+
+        <footer>
+            <div class="bottom">
+                <div class="footerContent">
+                    <div class="content">
+                        <h4>Contacts</h4>
+                        <p>bitmindofficial@gmail.com</p>
+                        <p>mrlwitwmabusiness@gmail.com</p>
+                    </div>
+
+                    <div class="content">
+                        <h4>Polices</h4>
+                        <p>
+                            <a href="/policies/privacy-policy/">Privacy Policy</a>
+                        </p>
+                        <p>
+                            <a href="/policies/terms-of-usage/">Terms of Service</a>
+                        </p>
+                    </div>
+
+                    <div class="content">
+                        <h4>Company</h4>
+                        <p>
+                            <a href="/about-us/">About Us</a>
+                        </p>
+                        <p>
+                            <a href="/team/">Our Team</a>
+                        </p>
+                    </div>
+                </div>
+                <span>©BitMindAI 2025</span>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

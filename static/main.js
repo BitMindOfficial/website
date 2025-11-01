@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     footer.remove()
 
     // <div id="frame" style="width:100%; height:100%;"><iframe data-aa='2393439' src='//acceptable.a-ads.com/2393439' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe><a style="display: block; text-align: right; font-size: 12px;" id="preview-link" href="https://aads.com/campaigns/new/?source_id=2393439&source_type=ad_unit&partner=2393439">Advertise here</a></div>
-    main.innerHTML += `<iframe data-aa='2393439' src='//acceptable.a-ads.com/2393439' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>`
+    // main.innerHTML += `<iframe data-aa='2393439' src='//acceptable.a-ads.com/2393439' style='border:0px; padding:0; width:100%; height:100%; overflow:hidden; background-color: transparent;'></iframe>`
     main.append(footerCopy)
     
     
@@ -191,3 +191,4 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 });
+
